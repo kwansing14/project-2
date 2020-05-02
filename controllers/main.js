@@ -29,6 +29,30 @@ module.exports = (db) => {
                 matchResults
             }
 
+            //shuffle the arrayl
+            function shuffle(array) {
+                for (var i = array.length - 1; i > 0; i--) {
+                    var j = Math.floor(Math.random() * (i + 1));
+                    var temp = array[i];
+                    array[i] = array[j];
+                    array[j] = temp;
+                }
+            }
+
+            shuffle(data.results)
+
+            //only show the first 10 arrays
+            if (data.results.length>10) {
+                let tempArray = [];
+                for(let i=0; i<10; i++){
+                    tempArray.push(data.results[i])
+                }
+                data.results = tempArray;
+            }
+            // //response.send(data)
+
+
+
             response.render('main/index',data)
             });
 

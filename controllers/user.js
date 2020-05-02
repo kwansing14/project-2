@@ -36,7 +36,7 @@ module.exports = (db) => {
                     response.cookie('logged in', 'true');
                     response.cookie('username',results[0].name)
                     response.cookie('userid',results[0].id)
-                    response.redirect('/profile')
+                    response.redirect('/')
                 }else{
                     data={
                         status: "pwwrong"
@@ -115,6 +115,7 @@ module.exports = (db) => {
                 loggedIn,
                 username
             }
+            //response.send(data)
             response.render('main/profile',data);
         });
     }

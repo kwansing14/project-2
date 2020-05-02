@@ -22,7 +22,7 @@ class playlist extends React.Component {
         <body style={{backgroundColor:"#A3C4C9"}}>
             <div class='container mt-5'>
                 <div class="row d-flex justify-content-center">
-                    <h1 style={{marginLeft:"-200px"}}>Tweedr</h1>
+                    <h1 style={{marginLeft:"-200px"}}>Play together, ai mai?</h1>
                 </div>
                 <div class="row d-flex justify-content-center">
                     <h3>Login page</h3>
@@ -53,7 +53,6 @@ class playlist extends React.Component {
                 </div>
             </div>
         </body>
-        <script src="./script.js"></script>
       </html>
     );
   }

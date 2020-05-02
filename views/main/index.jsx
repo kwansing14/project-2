@@ -3,7 +3,7 @@ var MatchesCol = require("../components/matchesCol");
 
 class index extends React.Component {
   render() {
-
+    console.log(this.props.results)
     let userButtons = (
         <div class='mt-3 d-flex justify-content-around'>
             <div>
@@ -57,12 +57,8 @@ class index extends React.Component {
         )
     });
 
-    let selection = "";
-    if(this.props.loggedIn === true){
-    }
-
     let matchlist = "";
-    if(this.props.loggedIn === true){
+    if(this.props.loggedIn === true && this.props.matchResults != null){
         matchlist = this.props.matchResults.map ((element) => {
             return (
                 <div class='d-flex justify-content-center mt-2'>
