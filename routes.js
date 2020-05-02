@@ -18,7 +18,7 @@ module.exports = (app, allModels) => {
 
     app.get('/', main.index);
     app.post('/matched',main.matched)
-    //app.get('/checkmatch',main.checkMatch)
+    app.get('/checkmatch',main.checkMatch)
     app.get('/setup',user.setup)
     app.get('/login',user.getLogin)
     app.post('/login',user.postLogin)

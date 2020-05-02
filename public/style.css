@@ -1,5 +1,11 @@
 body {
 	background-color: #f4eeff;
+	font-family: 'Barlow', sans-serif;
+}
+
+.matchbtn {
+	border-radius: 10px;
+	width: 280px;
 }
 
 .main {
@@ -44,7 +50,7 @@ body {
 	margin: 10px;
 }
 
-/*buttons style*/
+/*Name underline style*/
 .btnuser {
   text-decoration: none;
   display: inline-block;
@@ -70,4 +76,52 @@ body {
 }
 .btnuser :hover {
 	color: #424874;
+}
+
+
+/* BTN THREE */
+
+.btn-three {
+  position: relative;
+  color: black;
+  width: 256px;
+  height: 80px;
+  /*line-height: 64px;*/
+  transition: all 0.3s;
+  span {
+    transition: all 0.3s;
+    tranform: scale(1, 1);
+  }
+}
+
+.btn-three::before, .btn-three::after {
+  content: '';
+  position: absolute;
+  transition: all 0.3s;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+.btn-three::before {
+  opacity: 0;
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(1, 0.1);
+}
+
+.btn-three:hover::before {
+  opacity: 1;
+  transform: scale(1, 1);
+}
+
+.btn-three::after {
+  transition: all 0.3s;
+  border: 2px solid rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+}
+
+.btn-three:hover::after {
+  transform: scale(1, .1);
+  opacity: 0;
 }

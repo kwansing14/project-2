@@ -65,7 +65,7 @@ module.exports = (db) => {
             response.cookie('logged in', 'true');
             response.cookie('username',results[0].name)
             response.cookie('userid',results[0].id)
-            response.redirect('/setup');
+            response.redirect('/profile');
         })
     }
 
@@ -113,7 +113,6 @@ module.exports = (db) => {
                 loggedIn,
                 username
             }
-            //console.log("data>>>>>>>"+data)
             response.render('main/profile',data);
         });
     }

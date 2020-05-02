@@ -38,59 +38,9 @@ module.exports = (dbPoolInstance) => {
         })
     };
 
-    let checkMatcheddb = (callback) => {
-        //let values = request;
-        let query = 'select distinct (user1_id) from user_match'
-        dbPoolInstance.query(query, (error, results) => {
-             if(error){
-                callback(error, null);
-            }else{
-                if(results.rows.length > 0 ){
-
-                    callback(null, results.rows);
-                }else{
-                    callback(null, null);
-                }
-            }
-        })
-    }
-
-    let checkMatcheddb1 = (request, callback) => {
+    let checkMatch = (request, callback) => {
         let values = request;
-        let query = 'select user2_id from user_match where user1_id = $1'
-        dbPoolInstance.query(query, values, (error, results) => {
-             if(error){
-                callback(error, null);
-            }else{
-                if(results.rows.length > 0 ){
-
-                    callback(null, results.rows);
-                }else{
-                    callback(null, null);
-                }
-            }
-        })
-    }
-
-    let checkMatcheddb2 = (request, callback) => {
-        let values = request;
-        let query = 'select user2_id from user_match where user1_id = $1'
-        dbPoolInstance.query(query, values, (error, results) => {
-             if(error){
-                callback(error, null);
-            }else{
-                if(results.rows.length > 0 ){
-                    callback(null, results.rows);
-                }else{
-                    callback(null, null);
-                }
-            }
-        })
-    }
-
-    let checkMatcheddb3rdtry = (request, callback) => {
-        let values = request;
-        let query = 'select * from user_match where user1_id IN(select user2_id from user_match where user1_id = $1);'
+        let query = 'select *,profile.name as username from user_match inner join profile ON(user_id = user1_id) inner join game ON(game_id = game.id) where user1_id IN(select user2_id from user_match where user1_id = $1) and user2_id = $1'
         dbPoolInstance.query(query, values, (error, results) => {
              if(error){
                 callback(error, null);
@@ -106,9 +56,6 @@ module.exports = (dbPoolInstance) => {
     return {
         index,
         matcheddb,
-        checkMatcheddb,
-        checkMatcheddb1,
-        checkMatcheddb2,
-        checkMatcheddb3rdtry
+        checkMatch
     };
 };

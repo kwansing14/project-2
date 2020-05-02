@@ -2,8 +2,7 @@ var React = require("react");
 
 class index extends React.Component {
     render() {
-    //console.log("propsss"+this.props.results[0])
-    ///RETURNS
+        console.log(this.props.results)
     let userButtons = (
         <div class='my-3 d-flex justify-content-end'>
             <div>

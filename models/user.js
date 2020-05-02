@@ -69,7 +69,7 @@ module.exports = (dbPoolInstance) => {
                 callback(error, null);
             }else{
                 if( result.rows.length > 0 ){
-                    console.log(result.rows)
+                    //console.log(result.rows)
                     callback(null, result.rows);
                 }else{
                     callback(null, null);
@@ -85,7 +85,7 @@ module.exports = (dbPoolInstance) => {
                 callback(error, null);
             }else{
                 if( result.rows.length > 0 ){
-                    console.log(result.rows)
+                    //console.log(result.rows)
                     callback(null, result.rows);
                 }else{
                     callback(null, null);
@@ -111,12 +111,30 @@ module.exports = (dbPoolInstance) => {
         })
     }
 
+    let singleProfile = (request,callback) => {
+        let query = "Select *, profile.name AS username from profile inner join game on(game_id = game.id) where user_id = $1";
+        let values = request;
+        dbPoolInstance.query(query, values, (error, result)=>{
+            if(error){
+                callback(error, null);
+            }else{
+                if( result.rows.length > 0 ){
+                    //console.log(result.rows)
+                    callback(null, result.rows);
+                }else{
+                    callback(null, null);
+                }
+            }
+        })
+    }
+
     return {
         postRegister:postRegister,
         postLogin:postLogin,
         postSetupdb,
         getProfile,
         deleteProfiledb,
-        allProfile
+        allProfile,
+        singleProfile
     };
 };
