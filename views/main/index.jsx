@@ -5,39 +5,46 @@ class index extends React.Component {
   render() {
 
     let userButtons = (
-        <div class='my-3 d-flex justify-content-end'>
+        <div class='mt-3 d-flex justify-content-around'>
             <div>
                 <form method="get" action="/register">
-                    <input type="submit" value="Register" class="btn btn-dark rounded-pill" style={{width:"100px"}}/>
+                    <button class="btn btnuser p-0 ml-5"><span>Register</span></button>
                 </form>
             </div>
             <div>
                 <form method="get" action="/login">
-                    <input type="submit" value="Login" class="ml-2 btn btn-dark rounded-pill" style={{width:"100px"}}/>
+                    <button class="btn btnuser p-0 mr-5"><span>Login</span></button>
                 </form>
             </div>
         </div>);
     if(this.props.loggedIn === true){
         userButtons = (
-            <div class='d-flex m-3'>
-                Username: &nbsp;
-                <button class='btn btnuser p-0'>
-                    <b>{this.props.username}</b>
-                </button>
-                <div>
-                    game:&nbsp;<b>{this.props.results[0].gamename}</b>
-                </div>
-                <div class='ml-auto'>
-                    <form method="post" action="/logout?_method=delete">
-                        <button class='btn btnuser p-0'><b>Log out</b></button>
+            <div class='m-3'>
+                <div class='d-flex'>
+                    Username: &nbsp;
+                    <form method="get" action="/profile">
+                        <button class='btn btnuser p-0' style={{marginTop:"-3px"}}>
+                            <span>{this.props.username}</span>
+                        </button>
                     </form>
+                    <div class='ml-auto'>
+                        <form method="post" action="/logout?_method=delete">
+                            <button class='btn btnuser p-0' style={{marginTop:"-3px"}}><span>Log out</span></button>
+                        </form>
+                    </div>
+                </div>
+                <div class='mt-3'>
+                    Game:&nbsp;
+                    <button class='btn btnuser p-0' style={{marginTop:"-3px"}}>
+                        <span>{this.props.results[0].gamename}</span>
+                    </button>
                 </div>
             </div>
         )
     }
     let list = this.props.results.map ((element) => {
         return (
-            <div class="mb-2 box2">
+            <div class="mb-2 box2" style={{top:'170px', width:'95%', minWidth:'400px'}}>
                 <div class="btn btn-block mainbtn btn-light" id={element.user_id} style={{boxShadow: "2px 2px 4px #000000"}}>
                     <div class="d-flex justify-content-start" style={{fontSize:"12px"}}>Game: {element.gamename}
                     </div>
@@ -50,18 +57,25 @@ class index extends React.Component {
         )
     });
 
-    let matchlist = this.props.matchResults.map ((element) => {
-        return (
-            <div class='d-flex justify-content-center mt-2'>
-                <button class='btn btn-three'>
-                    <span>
-                        IGN: {element.username}<br/>
-                        Game: {element.name}
-                    </span>
-                </button>
-            </div>
-        )
-    })
+    let selection = "";
+    if(this.props.loggedIn === true){
+    }
+
+    let matchlist = "";
+    if(this.props.loggedIn === true){
+        matchlist = this.props.matchResults.map ((element) => {
+            return (
+                <div class='d-flex justify-content-center mt-2'>
+                    <button class='btn btn-three'>
+                        <span>
+                            IGN: {element.username}<br/>
+                            Game: {element.name}
+                        </span>
+                    </button>
+                </div>
+            )
+        })
+    }
 
     return (
         <html>
@@ -85,8 +99,7 @@ class index extends React.Component {
                 {matchlist}
             </div>
             <div class="main">
-                <div class='container box1 border mt-5'>
-
+                <div class='container box1 mt-5'>
                     {list}
                     <div class='text-center' style={{marginTop:"450px"}}>
                         Interested to team with this player?

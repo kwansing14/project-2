@@ -16,13 +16,11 @@ body {
 
 .box1{
 	position: relative;
+	border:1px solid #f4eeff;
 }
 
 .box2{
 	position: absolute;
-	width:90%;
-	height:200px;
-	top:170px;
 }
 
 .yesbtn{

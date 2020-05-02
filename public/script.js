@@ -45,6 +45,10 @@ function onClickno (event) {
     box2[i].style='display:none'
 
 }
+if (document.cookie.search('logged in=true')>1) {
+    console.log('trueloggedin')
+    yesbtn.addEventListener('click', onClickyes);
+    nobtn.addEventListener('click', onClickno);
+}
 
-yesbtn.addEventListener('click', onClickyes);
-nobtn.addEventListener('click', onClickno);
+    //console.log("-------------------")
