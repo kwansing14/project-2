@@ -104,10 +104,13 @@ body {
   height: 100%;
   z-index: 1;
 }
+
 .btn-three::before {
   opacity: 0;
-  background: rgba(255, 255, 255, 0.1);
+  /*background: rgba(255, 255, 255, 0.1);*/
+  background: rgba(50,0,150, 0.2);
   transform: scale(1, 0.1);
+  border-radius: 10px;
 }
 
 .btn-three:hover::before {
