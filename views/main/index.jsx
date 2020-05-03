@@ -99,7 +99,7 @@ class index extends React.Component {
                 {matchlist}
             </div>
             <div class="main">
-                <div class='container box1 mt-5'>
+                <div class='container d-flex justify-content-center box1 mt-5'>
                     {list}
                     <div class='text-center' style={{marginTop:"450px"}}>
                         Interested to team with this player?

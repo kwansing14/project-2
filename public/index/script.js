@@ -27,6 +27,22 @@ function onClickyes (event) {
     console.log('clicked!'+i)
     box2[i].style='display:none'
 
+    if (i == 0) {
+        console.log('u ran out of tries')
+        document.querySelector('.text-center').style = 'display:none'
+
+        //create refresh button
+        let container = document.querySelector('.container');
+        let btn = document.createElement('button')
+        btn.setAttribute('class','refbtn btn btnuser p-0 d-flex justify-content-center')
+        btn.setAttribute('style','margin-top:200px; font-size:20px')
+        btn.innerHTML = '<span>Click to refresh</span>'
+        container.appendChild(btn)
+
+        let refbtn = document.querySelector('.refbtn')
+        refbtn.addEventListener('click', onClickref);
+    }
+
     let id = document.querySelectorAll('.mainbtn')[i].id
     console.log(id);
     let data = {id}
@@ -37,12 +53,33 @@ function onClickyes (event) {
     request.send(JSON.stringify(data))
 }
 
+function onClickref () {
+    console.log('clickkkkk')
+    location.reload()
+}
+
 function onClickno (event) {
         function responseHandler () {
     }
     i = i - 1;
     console.log('clicked!'+i)
     box2[i].style='display:none'
+
+     if (i == 0) {
+        console.log('u ran out of tries')
+        document.querySelector('.text-center').style = 'display:none'
+
+        //create refresh button
+        let container = document.querySelector('.container');
+        let btn = document.createElement('button')
+        btn.setAttribute('class','refbtn btn btnuser p-0 d-flex justify-content-center')
+        btn.setAttribute('style','margin-top:200px; font-size:20px')
+        btn.innerHTML = '<span>Click to refresh</span>'
+        container.appendChild(btn)
+
+        let refbtn = document.querySelector('.refbtn')
+        refbtn.addEventListener('click', onClickref);
+    }
 
 }
 if (document.cookie.search('logged in=true')>1) {

@@ -33,7 +33,7 @@ module.exports = (db) => {
                 matchResults
             }
 
-            //shuffle the arrayl
+            //shuffle the array
             function shuffle(array) {
                 for (var i = array.length - 1; i > 0; i--) {
                     var j = Math.floor(Math.random() * (i + 1));
@@ -53,8 +53,6 @@ module.exports = (db) => {
                     data.results = tempArray;
                 }
             }
-            response.send(data)
-
             response.render('main/index',data)
             });
 
