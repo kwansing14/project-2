@@ -106,17 +106,24 @@ module.exports = (db) => {
             loggedIn = true;
         }
         let userid = request.cookies['userid']
+
         values = [userid]
         db.users.getProfile(values, (error, results) => {
             //response.send(tweets)
             //console.log(results)
-            data = {
-                results,
-                loggedIn,
-                username
-            }
-            //response.send(data)
-            response.render('main/profile',data);
+
+            let values = [userid] //user is 10
+            db.index.checkMatch(values, (error,matchResults) => {
+
+                let data = {
+                    username,
+                    loggedIn,
+                    results,
+                    matchResults
+                }
+                //response.send(data)
+                response.render('main/profile',data);
+            });
         });
     }
 
@@ -148,6 +155,7 @@ module.exports = (db) => {
             //response.redirect('/profile');
         });
     }
+
   /**
    * ===========================================
    * Export controller functions as a module
@@ -159,7 +167,6 @@ module.exports = (db) => {
     getRegister: getRegister,
     postRegister: postRegister,
     logout: logout,
- ///   userPage,
     setup,
     postSetup,
     profile,

@@ -45,7 +45,7 @@ class index extends React.Component {
     let list = this.props.results.map ((element) => {
         return (
             <div class="mb-2 box2" style={{top:'170px', width:'95%', minWidth:'400px'}}>
-                <div class="btn btn-block mainbtn btn-light" id={element.user_id} style={{boxShadow: "2px 2px 4px #000000"}}>
+                <div class="btn btn-block mainbtn btn-light" id={element.id} style={{boxShadow: "2px 2px 4px #000000"}}>
                     <div class="d-flex justify-content-start" style={{fontSize:"12px"}}>Game: {element.gamename}
                     </div>
                         <p>Name: {element.name}</p>
@@ -81,14 +81,14 @@ class index extends React.Component {
                 integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
                 crossorigin="anonymous"/>
             <link href="https://fonts.googleapis.com/css2?family=Baloo+2&family=Barlow:wght@100;400&display=swap" rel="stylesheet"/>
-            <link rel="stylesheet" href="style.css"/>
+            <link rel="stylesheet" href="../style.css"/>
         </head>
         <body>
             <div class="sidenav">
                 <div class='mx-2' style={{margin:"10px", borderBottom:"1px solid black"}}>
                     <b>User info:</b>
                 </div>
-                {userButtons}
+                    {userButtons}
                 <div class='mx-2 mt-5' style={{borderBottom:"1px solid black"}}>
                     Matches:
                 </div>
@@ -107,7 +107,7 @@ class index extends React.Component {
                 </div>
             </div>
         </body>
-            <script src="./script.js"></script>
+            <script src="../script.js"></script>
         </html>
         );
     }

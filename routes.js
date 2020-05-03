@@ -16,7 +16,7 @@ module.exports = (app, allModels) => {
     const main = require('./controllers/main')(allModels);
     const user = require('./controllers/user')(allModels);
 
-    app.get('/', main.index);
+    app.get('/index/:gameid/:id', main.index);
     app.post('/matched',main.matched)
     app.get('/checkmatch',main.checkMatch)
     app.get('/setup',user.setup)

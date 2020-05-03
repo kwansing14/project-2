@@ -47,7 +47,7 @@ class index extends React.Component {
                                     <b>x</b></button>
                                 </div>
                             </div>
-                            <form method='get' action='/'>
+                            <form method='get' action={'/index/'+element.gameid+'/'+element.id}>
                                 <button class='btn btn-block'>
                                     <p>Name: {element.name}</p>
                                     <p>Level: {element.level}</p>
@@ -59,6 +59,21 @@ class index extends React.Component {
                 </div>
             )
         });
+    }
+    let matchlist = "";
+    if(this.props.loggedIn === true && this.props.matchResults != null){
+        matchlist = this.props.matchResults.map ((element) => {
+            return (
+                <div class='d-flex justify-content-center mt-2'>
+                    <button class='btn btn-three'>
+                        <span>
+                            IGN: {element.username}<br/>
+                            Game: {element.name}
+                        </span>
+                    </button>
+                </div>
+            )
+        })
     }
     return (
         <html>
@@ -76,12 +91,18 @@ class index extends React.Component {
                     <b>User info:</b>
                 </div>
                     {userButtons}
+                <div class='mx-2 mt-5' style={{borderBottom:"1px solid black"}}>
+                    Matches:
+                </div>
+                    {matchlist}
             </div>
         <div class="main">
-            <div class='container border mt-5'>
-                <div class='row d-flex justify-content-center'>
+            <div class='container box1 mt-5'>
+                <div class='row mb-3 d-flex justify-content-center'>
                     <form method="get" action="/setup">
-                        <button class='btn btn-link border' type="submit">Create another game profile</button>
+                        <button class='btn btnuser p-0' type="submit" style={{fontSize:'20px'}}>
+                        <span>Create another game profile</span>
+                        </button>
                     </form>
                 </div>
                 <div>

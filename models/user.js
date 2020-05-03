@@ -63,7 +63,7 @@ module.exports = (dbPoolInstance) => {
 
     let getProfile = (request, callback) => {
         let values = request;
-        let query = "SELECT profile.id, profile.name, level, server, bio, user_id, game.name AS gamename FROM profile INNER JOIN game ON (game_id = game.id) where user_id = $1";
+        let query = "SELECT profile.id, profile.name, level, server, bio, user_id, game.name AS gamename, game.id AS gameid FROM profile INNER JOIN game ON (game_id = game.id) where user_id = $1";
         dbPoolInstance.query(query, values, (error, result)=>{
             if(error){
                 callback(error, null);
@@ -78,9 +78,12 @@ module.exports = (dbPoolInstance) => {
         })
     }
 
-    let allProfile = (callback) => {
-        let query = "SELECT profile.id, profile.name, level, server, bio, user_id, game.name AS gamename FROM profile INNER JOIN game ON (game_id = game.id)";
-        dbPoolInstance.query(query, (error, result)=>{
+    let allProfile = (request, callback) => {
+        let values = request;
+        console.log("request")
+        //console.log(request)
+        let query = "SELECT profile.id, profile.name, level, server, bio, user_id, game.name AS gamename FROM profile INNER JOIN game ON (game_id = game.id) where not profile.id = $1 and game.id = $2";
+        dbPoolInstance.query(query, values, (error, result)=>{
             if(error){
                 callback(error, null);
             }else{

@@ -6,20 +6,21 @@ module.exports = (db) => {
     **/
 
     let index = (request, response) => {
+        console.log(request.body)
         let username = request.cookies['username']
         let userid = request.cookies['userid']
         let loggedIn = false
         if( request.cookies['logged in'] === 'true'){
             loggedIn = true;
         }
-        db.users.allProfile((error, results) => {
+        let values = [request.params.id, request.params.gameid]
+        console.log(values)
+        db.users.allProfile(values, (error, results) => {
             //console.log(results)
 
             //nesting match checking here
             let values = [userid] //user is 10
-            var matchedid2 = [];
             let data = {};
-
             db.index.checkMatch(values, (error,matchResults) => {
 
             let data = {
@@ -50,8 +51,6 @@ module.exports = (db) => {
                 data.results = tempArray;
             }
             // //response.send(data)
-
-
 
             response.render('main/index',data)
             });
