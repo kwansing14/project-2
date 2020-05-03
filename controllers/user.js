@@ -73,7 +73,7 @@ module.exports = (db) => {
         response.clearCookie('logged in');
         response.clearCookie('userid');
         response.clearCookie('username');
-        response.redirect('/profile')
+        response.redirect('/')
     };
 
     let setup = (request,response) => {
