@@ -96,7 +96,7 @@ class index extends React.Component {
                 <div class='mx-2 mt-5' style={{borderBottom:"1px solid black"}}>
                     Matches:
                 </div>
-                {matchlist}
+                    {matchlist}
             </div>
             <div class="main">
                 <div class='container d-flex justify-content-center box1 mt-5'>
@@ -110,8 +110,8 @@ class index extends React.Component {
                     </div>
                 </div>
             </div>
-        </body>
             <script src="../script.js"></script>
+        </body>
         </html>
         );
     }

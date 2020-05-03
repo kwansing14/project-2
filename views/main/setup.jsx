@@ -104,9 +104,9 @@ class index extends React.Component {
                     </form>
                 </div>
             </div>
+        <script src="./scriptsetup.js"></script>
         </body>
-            <script src="./scriptsetup.js"></script>
-          </html>
+        </html>
         );
     }
 }

@@ -82,7 +82,7 @@ module.exports = (dbPoolInstance) => {
         let values = request;
         //console.log("request")
         //console.log(request)
-        let query = "SELECT profile.id, profile.name, level, server, bio, user_id, game.name AS gamename FROM profile INNER JOIN game ON (game_id = game.id) where not profile.id = $1 and game.id = $2";
+        let query = "SELECT profile.id, profile.name, level, server, bio, user_id, game.name AS gamename FROM profile INNER JOIN game ON (game_id = game.id) where not profile.id = $1 and game.id = $2 and not profile.id IN (select user2_id from user_match where user1_id = $1);";
         dbPoolInstance.query(query, values, (error, result)=>{
             if(error){
                 callback(error, null);

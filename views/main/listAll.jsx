@@ -77,8 +77,8 @@ class index extends React.Component {
                 </div>
             </div>
         </div>
+        <script src="./scriptsetup.js"></script>
         </body>
-            <script src="./scriptsetup.js"></script>
           </html>
         );
     }

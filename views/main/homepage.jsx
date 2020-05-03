@@ -35,6 +35,7 @@ class playlist extends React.Component {
                     </div>
                 </div>
             </div>
+        <script src="./scriptpw.js"></script>
         </body>
       </html>
     );
