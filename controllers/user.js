@@ -36,7 +36,7 @@ module.exports = (db) => {
                     response.cookie('logged in', 'true');
                     response.cookie('username',results[0].name)
                     response.cookie('userid',results[0].id)
-                    response.redirect('/')
+                    response.redirect('/profile')
                 }else{
                     data={
                         status: "pwwrong"
@@ -73,7 +73,7 @@ module.exports = (db) => {
         response.clearCookie('logged in');
         response.clearCookie('userid');
         response.clearCookie('username');
-        response.redirect('/')
+        response.redirect('/profile')
     };
 
     let setup = (request,response) => {
@@ -101,18 +101,20 @@ module.exports = (db) => {
     }
     let profile = (request,response) => {
         var username = request.cookies['username']
+        let userid = request.cookies['userid']
+        let profileid = request.cookies['profileid']
+
         let loggedIn = false
         if( request.cookies['logged in'] === 'true'){
             loggedIn = true;
         }
-        let userid = request.cookies['userid']
 
         values = [userid]
         db.users.getProfile(values, (error, results) => {
             //response.send(tweets)
             //console.log(results)
 
-            let values = [userid] //user is 10
+            let values = [profileid] //user is 10
             db.index.checkMatch(values, (error,matchResults) => {
 
                 let data = {

@@ -4,22 +4,25 @@ module.exports = (db) => {
     * Controller logic
     * ===========================================
     **/
-
+    let homepage = (request, response) => {
+        response.render('main/homepage')
+    }
     let index = (request, response) => {
         console.log(request.body)
         let username = request.cookies['username']
-        let userid = request.cookies['userid']
+        let profileid = request.cookies['profileid']
+        response.cookie('profileid',request.params.id)
         let loggedIn = false
         if( request.cookies['logged in'] === 'true'){
             loggedIn = true;
         }
         let values = [request.params.id, request.params.gameid]
-        console.log(values)
+        //console.log(values)
         db.users.allProfile(values, (error, results) => {
             //console.log(results)
 
             //nesting match checking here
-            let values = [userid] //user is 10
+            let values = [profileid] //user is 10
             let data = {};
             db.index.checkMatch(values, (error,matchResults) => {
 
@@ -39,16 +42,16 @@ module.exports = (db) => {
                     array[j] = temp;
                 }
             }
-
-            shuffle(data.results)
-
-            //only show the first 10 arrays
-            if (data.results.length>10) {
-                let tempArray = [];
-                for(let i=0; i<10; i++){
-                    tempArray.push(data.results[i])
+            if(data.results != null) {
+                shuffle(data.results)
+                //only show the first 10 arrays
+                if (data.results.length>10) {
+                    let tempArray = [];
+                    for(let i=0; i<10; i++){
+                        tempArray.push(data.results[i])
+                    }
+                    data.results = tempArray;
                 }
-                data.results = tempArray;
             }
             // //response.send(data)
 
@@ -60,23 +63,13 @@ module.exports = (db) => {
 
     let matched = (request, response) => {
         //console.log(request.body.id)
-        let userid = request.cookies['userid']
-        let values = [userid, request.body.id]
+        let profileid = request.cookies['profileid']
+        console.log(profileid)
+        let values = [profileid, request.body.id]
         db.index.matcheddb(values, (error,results) => {
         })
     }
 
-    let checkMatch = (request, response) => {
-        let userid = request.cookies['userid']
-        let values = [userid] //user is 10
-        var matchedid2 = [];
-        let data = {};
-
-        db.index.checkMatcheddb3rdtry(values, (error,results) => {
-
-            response.send(results)
-        });
-    }
 
   /**
    * ===========================================
@@ -86,6 +79,6 @@ module.exports = (db) => {
   return {
     index,
     matched,
-    checkMatch
+    homepage
   };
 }

@@ -40,7 +40,7 @@ module.exports = (dbPoolInstance) => {
 
     let checkMatch = (request, callback) => {
         let values = request;
-        let query = 'select *,profile.name as username from user_match inner join profile ON(user_id = user1_id) inner join game ON(game_id = game.id) where user1_id IN(select user2_id from user_match where user1_id = $1) and user2_id = $1'
+        let query = 'select *,profile.name AS username FROM user_match inner join profile ON(profile.id = user1_id) inner join game ON(game_id = game.id) where user1_id IN(select user2_id from user_match where user1_id = $1) and user2_id = $1'
         dbPoolInstance.query(query, values, (error, results) => {
              if(error){
                 callback(error, null);

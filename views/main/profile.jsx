@@ -4,15 +4,15 @@ class index extends React.Component {
     render() {
         console.log(this.props)
     let userButtons = (
-        <div class='my-3 d-flex justify-content-end'>
+       <div class='mt-3 d-flex justify-content-around'>
             <div>
                 <form method="get" action="/register">
-                    <input type="submit" value="Register" class="btn btn-dark rounded-pill" style={{width:"100px"}}/>
+                    <button class="btn btnuser p-0 ml-5"><span>Register</span></button>
                 </form>
             </div>
             <div>
                 <form method="get" action="/login">
-                    <input type="submit" value="Login" class="ml-2 btn btn-dark rounded-pill" style={{width:"100px"}}/>
+                    <button class="btn btnuser p-0 mr-5"><span>Login</span></button>
                 </form>
             </div>
         </div>);
@@ -31,6 +31,12 @@ class index extends React.Component {
                             <button class='btn btnuser p-0' style={{marginTop:"-3px"}}><span>Log out</span></button>
                         </form>
                     </div>
+                </div>
+                <div class='mt-3'>
+                    Game:&nbsp;
+                    <button class='btn btnuser p-0' style={{marginTop:"-3px"}}>
+                        <span>{this.props.results[0].gamename}</span>
+                    </button>
                 </div>
             </div>
         )
@@ -75,6 +81,14 @@ class index extends React.Component {
             )
         })
     }
+    let createbutton = '';
+    if(this.props.loggedIn === true) {
+        createbutton = <form method="get" action="/setup">
+            <button class='btn btnuser p-0' type="submit" style={{fontSize:'20px'}}>
+            <span>Create another game profile</span>
+            </button>
+        </form>
+    }
     return (
         <html>
         <head>
@@ -99,11 +113,7 @@ class index extends React.Component {
         <div class="main">
             <div class='container box1 mt-5'>
                 <div class='row mb-3 d-flex justify-content-center'>
-                    <form method="get" action="/setup">
-                        <button class='btn btnuser p-0' type="submit" style={{fontSize:'20px'}}>
-                        <span>Create another game profile</span>
-                        </button>
-                    </form>
+                    {createbutton}
                 </div>
                 <div>
                     {list}

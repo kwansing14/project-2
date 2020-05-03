@@ -3,7 +3,8 @@ var MatchesCol = require("../components/matchesCol");
 
 class index extends React.Component {
   render() {
-    console.log(this.props.results)
+    let gamename = "";
+    //console.log(this.props.results)
     let userButtons = (
         <div class='mt-3 d-flex justify-content-around'>
             <div>
@@ -17,7 +18,7 @@ class index extends React.Component {
                 </form>
             </div>
         </div>);
-    if(this.props.loggedIn === true){
+    if(this.props.loggedIn === true && this.props.results != null){
         userButtons = (
             <div class='m-3'>
                 <div class='d-flex'>
@@ -42,20 +43,23 @@ class index extends React.Component {
             </div>
         )
     }
-    let list = this.props.results.map ((element) => {
-        return (
-            <div class="mb-2 box2" style={{top:'170px', width:'95%', minWidth:'400px'}}>
-                <div class="btn btn-block mainbtn btn-light" id={element.id} style={{boxShadow: "2px 2px 4px #000000"}}>
-                    <div class="d-flex justify-content-start" style={{fontSize:"12px"}}>Game: {element.gamename}
+    let list="";
+    if (this.props.results != null) {
+        list = this.props.results.map ((element) => {
+            return (
+                <div class="mb-2 box2" style={{top:'170px', width:'95%', minWidth:'400px'}}>
+                    <div class="btn btn-block mainbtn btn-light" id={element.id} style={{boxShadow: "2px 2px 4px #000000"}}>
+                        <div class="d-flex justify-content-start" style={{fontSize:"12px"}}>Game: {element.gamename}
+                        </div>
+                            <p>Name: {element.name}</p>
+                            <p>Level: {element.level}</p>
+                            <p>Server: {element.server}</p>
+                            <p>Bio: {element.bio}</p>
                     </div>
-                        <p>Name: {element.name}</p>
-                        <p>Level: {element.level}</p>
-                        <p>Server: {element.server}</p>
-                        <p>Bio: {element.bio}</p>
                 </div>
-            </div>
-        )
-    });
+            )
+        });
+    }
 
     let matchlist = "";
     if(this.props.loggedIn === true && this.props.matchResults != null){
