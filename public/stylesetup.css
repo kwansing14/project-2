@@ -1,0 +1,108 @@
+body {
+	background-color: #f4eeff;
+	font-family: 'Barlow', sans-serif;
+}
+
+.matchbtn {
+	border-radius: 10px;
+	width: 280px;
+}
+
+.main {
+  margin-left: 300px; /* Same as the width of the sidenav */
+  font-size: 16px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+.form-control {
+	margin-bottom:30px;
+}
+.box1{
+	position: relative;
+	border:1px solid #f4eeff;
+}
+
+.box2{
+	position: absolute;
+}
+
+.yesbtn{
+	border: solid 1px;
+}
+
+.nobtn{
+	border: solid 1px;
+}
+
+.sidenav {
+  height: 100%;
+  width: 300px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #dcd6f7;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.logo {
+	width:150px;
+	margin: 10px;
+}
+.btnmain {
+	background-color:#a6b1e1;
+}
+
+/*Name underline style*/
+.btnuser {
+  text-decoration: none;
+  display: inline-block;
+  padding: 15px 20px;
+  position: relative;
+}
+.btnuser :after {
+  background: none repeat scroll 0 0 transparent;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 50%;
+  position: absolute;
+  background: #424874;
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+}
+.btnuser :hover:after {
+	color: #424874;
+  width: 100%;
+  left: 0;
+}
+.btnuser :hover {
+	color: #424874;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*//hdfjkahdskfasdfa*/

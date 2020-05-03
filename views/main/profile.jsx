@@ -2,7 +2,7 @@ var React = require("react");
 
 class index extends React.Component {
     render() {
-        console.log(this.props)
+        //console.log(this.props)
     let userButtons = (
        <div class='mt-3 d-flex justify-content-around'>
             <div>
@@ -108,11 +108,8 @@ class index extends React.Component {
                     <b>User info:</b>
                 </div>
                 <div class='m-3'>
-
                     {userButtons}
                     {matching}
-
-
             </div>
                 <div class='mx-2 mt-5' style={{borderBottom:"1px solid black"}}>
                     Matches:

@@ -53,7 +53,7 @@ module.exports = (db) => {
                     data.results = tempArray;
                 }
             }
-            // //response.send(data)
+            response.send(data)
 
             response.render('main/index',data)
             });
