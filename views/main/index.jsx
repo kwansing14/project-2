@@ -18,9 +18,8 @@ class index extends React.Component {
                 </form>
             </div>
         </div>);
-    if(this.props.loggedIn === true && this.props.results != null){
+    if(this.props.loggedIn === true){
         userButtons = (
-            <div class='m-3'>
                 <div class='d-flex'>
                     Username: &nbsp;
                     <form method="get" action="/profile">
@@ -34,12 +33,16 @@ class index extends React.Component {
                         </form>
                     </div>
                 </div>
-                <div class='mt-3'>
+        )
+    }
+    let matching = "";
+    if(this.props.results != null){
+        matching = (
+            <div class='mt-3'>
                     Game:&nbsp;
                     <button class='btn btnuser p-0' style={{marginTop:"-3px"}}>
                         <span>{this.props.results[0].gamename}</span>
                     </button>
-                </div>
             </div>
         )
     }
@@ -92,7 +95,11 @@ class index extends React.Component {
                 <div class='mx-2' style={{margin:"10px", borderBottom:"1px solid black"}}>
                     <b>User info:</b>
                 </div>
+
+                <div class='m-3'>
                     {userButtons}
+                    {matching}
+                </div>
                 <div class='mx-2 mt-5' style={{borderBottom:"1px solid black"}}>
                     Matches:
                 </div>
@@ -110,7 +117,7 @@ class index extends React.Component {
                     </div>
                 </div>
             </div>
-            <script src="../script.js"></script>
+            <script src="/index/script.js"></script>
         </body>
         </html>
         );

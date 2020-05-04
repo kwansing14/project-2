@@ -110,7 +110,7 @@ class index extends React.Component {
                 <div class='m-3'>
                     {userButtons}
                     {matching}
-            </div>
+                </div>
                 <div class='mx-2 mt-5' style={{borderBottom:"1px solid black"}}>
                     Matches:
                 </div>

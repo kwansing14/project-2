@@ -43,7 +43,7 @@ class playlist extends React.Component {
                                         </div>
                                         <div class='col'>
                                             <p><input name="name"/></p>
-                                            <p><input name="password" type="password" id="mypw"/></p>
+                                            <p><input name="password" type="password"/></p>
                                         </div>
                                     </div>
                                     <div class='row d-flex justify-content-center'>

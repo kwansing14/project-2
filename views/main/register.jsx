@@ -34,8 +34,7 @@ class register extends React.Component {
                                         </div>
                                         <div class='col'>
                                             <p><input name="name"/></p>
-                                            <p><input name="password" type="password" id="mypw"/></p>
-                                            {/*<p><input type="checkbox" onclick="myFunction()"/>Show Password</p>*/}
+                                            <p><input name="password" type="password"/></p>
                                         </div>
                                     </div>
                                     <div class='row d-flex justify-content-center'>
