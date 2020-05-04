@@ -88,7 +88,7 @@ class index extends React.Component {
                 integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
                 crossorigin="anonymous"/>
             <link href="https://fonts.googleapis.com/css2?family=Baloo+2&family=Barlow:wght@100;400&display=swap" rel="stylesheet"/>
-            <link rel="stylesheet" href="../style.css"/>
+            <link rel="stylesheet" href="/style.css"/>
         </head>
         <body>
             <div class="sidenav">
@@ -117,7 +117,7 @@ class index extends React.Component {
                     </div>
                 </div>
             </div>
-            <script src="/index/script.js"></script>
+            <script src="/project/script.js"></script>
         </body>
         </html>
         );
